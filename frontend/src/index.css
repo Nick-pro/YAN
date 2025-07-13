@@ -1,0 +1,145 @@
+/* 1. Import Google Font before any other rules */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* 2. Then Tailwind’s layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3. Your ultra‑dark enterprise theme color system */
+@layer base {
+  :root {
+    --background: 217 33% 3%;
+    --foreground: 210 40% 98%;
+
+    --card: 217 33% 3%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 217 33% 3%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 197 100% 50%;
+    --primary-foreground: 217 33% 3%;
+
+    --secondary: 217 32% 8%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 32% 8%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 32% 8%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 32% 8%;
+    --input: 217 32% 8%;
+    --ring: 197 100% 50%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-[#050517] text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    background: linear-gradient(135deg, #050517 0%, #0a0a23 50%, #0f0f3a 100%);
+    min-height: 100vh;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar with neon effect */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(5, 5, 23, 0.8);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #06b6d4, #3b82f6);
+  border-radius: 10px;
+  border: 2px solid rgba(5, 5, 23, 0.8);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #0891b2, #2563eb);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.8);
+}
+
+/* Enterprise-grade glassmorphism utilities */
+.glass-effect-ultra {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-effect-ultra:hover {
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(6, 182, 212, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Premium neon text effects */
+.neon-text {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+}
+
+.neon-text-cyan {
+  color: #06b6d4;
+  text-shadow: 
+    0 0 5px #06b6d4,
+    0 0 10px #06b6d4,
+    0 0 15px #06b6d4,
+    0 0 20px #06b6d4,
+    0 0 35px #06b6d4;
+}
+
+/* High-end button animations */
+@keyframes pulse-neon {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.8), 0 0 30px rgba(6, 182, 212, 0.6);
+  }
+}
+
+.pulse-neon {
+  animation: pulse-neon 2s infinite;
+}
+
+/* Ultra-smooth animations */
+.ultra-smooth {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Premium geometric patterns */
+.circuit-pattern {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(6, 182, 212, 0.3) 1px, transparent 0);
+  background-size: 40px 40px;
+}
