@@ -28,7 +28,7 @@ const Navbar = () => {
             {/* Logo box */}
             <div className="w-11 h-11 rounded-2xl overflow-hidden relative border border-cyan-400/30 shadow-md bg-gradient-to-br from-white/10 to-cyan-500/10 backdrop-blur-md">
               <img
-                src="/yan.jpg"
+                src="/yan.png"
                 alt="Yantrika Logo"
                 className="w-full h-full object-cover p-1 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
               />

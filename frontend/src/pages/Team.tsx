@@ -10,24 +10,26 @@ const Team = () => {
   const [coreTeam, setCoreTeam] = useState([]);
   const [alumni, setAlumni] = useState([]);
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
+
   useEffect(() => {
-    // Fetch core team members
-    axios.get("http://localhost:5000/api/members")
+    axios.get(`${API_URL}/api/members`)
       .then(res => setCoreTeam(res.data))
       .catch(err => console.error("Error fetching core team:", err));
 
-    // Fetch alumni data
-    axios.get("http://localhost:5000/api/alumni")
+    axios.get(`${API_URL}/api/alumni`)
       .then(res => setAlumni(res.data))
       .catch(err => console.error("Error fetching alumni:", err));
-  }, []);
+  }, [API_URL]);
 
   return (
     <div className="relative z-10 min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white">
       <AnimatedBackground />
       <Navbar />
+
       <div className="pt-20 pb-12 z-10 relative">
         <div className="container mx-auto px-4">
+          {/* Heading */}
           <motion.section
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,7 +44,7 @@ const Team = () => {
             </p>
           </motion.section>
 
-          {/* Core Team Section */}
+          {/* Core Team */}
           <motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -113,6 +115,7 @@ const Team = () => {
           </motion.section>
         </div>
       </div>
+
       <Footer />
     </div>
   );
