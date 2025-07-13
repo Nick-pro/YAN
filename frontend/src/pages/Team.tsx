@@ -10,16 +10,19 @@ const Team = () => {
   const [coreTeam, setCoreTeam] = useState([]);
   const [alumni, setAlumni] = useState([]);
 
+  // Dynamic API Base URL from Vercel .env
   const API_URL = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
-    axios.get(`${API_URL}/api/members`)
-      .then(res => setCoreTeam(res.data))
-      .catch(err => console.error("Error fetching core team:", err));
+    axios
+      .get(`${API_URL}/api/members`)
+      .then((res) => setCoreTeam(res.data))
+      .catch((err) => console.error("Error fetching core team:", err));
 
-    axios.get(`${API_URL}/api/alumni`)
-      .then(res => setAlumni(res.data))
-      .catch(err => console.error("Error fetching alumni:", err));
+    axios
+      .get(`${API_URL}/api/alumni`)
+      .then((res) => setAlumni(res.data))
+      .catch((err) => console.error("Error fetching alumni:", err));
   }, [API_URL]);
 
   return (
@@ -64,20 +67,38 @@ const Team = () => {
                              hover:scale-105 hover:shadow-xl hover:border-blue-500/60 hover:bg-white/10 
                              text-center group"
                 >
-                  <div className={`w-24 h-24 bg-gradient-to-r ${member.color || "from-blue-500 to-cyan-400"} rounded-full mx-auto mb-6 flex items-center justify-center text-white text-xl font-bold`}>
-                    {member.avatar || member.name?.split(" ").map(n => n[0]).join("")}
+                  <div
+                    className={`w-24 h-24 bg-gradient-to-r ${
+                      member.color || "from-blue-500 to-cyan-400"
+                    } rounded-full mx-auto mb-6 flex items-center justify-center text-white text-xl font-bold`}
+                  >
+                    {member.avatar ||
+                      member.name?.split(" ").map((n) => n[0]).join("")}
                   </div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-white">{member.name}</h3>
-                  <p className="text-blue-400 font-semibold mb-4 group-hover:text-blue-200">{member.role}</p>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-white">
+                    {member.name}
+                  </h3>
+                  <p className="text-blue-400 font-semibold mb-4 group-hover:text-blue-200">
+                    {member.role}
+                  </p>
                   <p className="text-gray-300 group-hover:text-gray-100 mb-6">{member.bio}</p>
                   <div className="flex justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <a href={member.github || "#"} className="p-2 bg-white/10 rounded-lg hover:bg-blue-500/40 hover:text-white transition-colors">
+                    <a
+                      href={member.github || "#"}
+                      className="p-2 bg-white/10 rounded-lg hover:bg-blue-500/40 hover:text-white transition-colors"
+                    >
                       <Github className="w-4 h-4" />
                     </a>
-                    <a href={member.linkedin || "#"} className="p-2 bg-white/10 rounded-lg hover:bg-blue-500/40 hover:text-white transition-colors">
+                    <a
+                      href={member.linkedin || "#"}
+                      className="p-2 bg-white/10 rounded-lg hover:bg-blue-500/40 hover:text-white transition-colors"
+                    >
                       <Linkedin className="w-4 h-4" />
                     </a>
-                    <a href={`mailto:${member.email || ""}`} className="p-2 bg-white/10 rounded-lg hover:bg-blue-500/40 hover:text-white transition-colors">
+                    <a
+                      href={`mailto:${member.email || ""}`}
+                      className="p-2 bg-white/10 rounded-lg hover:bg-blue-500/40 hover:text-white transition-colors"
+                    >
                       <Mail className="w-4 h-4" />
                     </a>
                   </div>
@@ -86,7 +107,7 @@ const Team = () => {
             </div>
           </motion.section>
 
-          {/* Alumni Section */}
+          {/* Alumni */}
           <motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
